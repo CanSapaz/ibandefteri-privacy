@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "ads": {
+    "interstitialEnabled": true,
+    "interstitialDailyCap": 2,
+    "interstitialMinGapHours": 4,
+    "graceSessions": 3,
+    "graceHours": 48,
+    "bannerEnabled": true,
+    "adFreeOfferAfterInterstitial": true,
+    "adFreeOfferIntervalDays": 3,
+    "adFreeRewardHours": 24
+  }
+}
