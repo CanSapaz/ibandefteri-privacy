@@ -39,56 +39,84 @@
 <body>
 
 <h1>IBAN Defteri — Gizlilik Politikası</h1>
-<p class="meta"><strong>Son güncelleme:</strong> 7 Ağustos 2026 · Uygulama: IBAN Defteri (com.memreyaa.ibandefteri)</p>
+<p class="meta"><strong>Son güncelleme:</strong> 5 Ekim 2026 · Uygulama: IBAN Defteri (com.memreyaa.ibandefteri)</p>
 <p class="lang-nav"><a href="#english">↓ English version</a></p>
 
 <h2>1. Özet</h2>
-<p>IBAN Defteri, IBAN numaralarınızı cihazınızda saklamanızı sağlayan bir araçtır. <strong>Hesap oluşturmanız gerekmez, giriş yapmanız gerekmez ve kişisel verileriniz hiçbir sunucuya gönderilmez.</strong> Kaydettiğiniz tüm bilgiler yalnızca kendi cihazınızda, şifrelenmiş olarak saklanır.</p>
+<p>IBAN Defteri, IBAN numaralarınızı cihazınızda saklamanızı sağlayan bir araçtır. <strong>Hesap oluşturmanız gerekmez, giriş yapmanız gerekmez ve bir sunucumuz yoktur; kaydettiğiniz bilgiler bize gönderilmez.</strong> Tüm kayıtlarınız yalnızca kendi cihazınızda, şifrelenmiş olarak saklanır. Reklam, satın alma, görselden metin okuma ve hata raporları için kullanılan hizmetlerin işlediği sınırlı teknik bilgiler 4. bölümde açıklanmıştır.</p>
 
 <h2>2. Cihazınızda Saklanan Veriler</h2>
 <p>Aşağıdaki bilgiler yalnızca cihazınızın yerel depolamasında tutulur ve tarafımızca <em>görülemez, toplanamaz veya erişilemez</em>:</p>
 <ul>
     <li><strong>IBAN numaraları</strong> ve hesap sahibi isimleri</li>
-    <li><strong>Banka seçimi</strong>, kategori, etiket ve açıklama notları</li>
-    <li><strong>Uygulama ayarları:</strong> tema, dil ve güvenlik tercihleri</li>
-    <li><strong>PIN kodu:</strong> yalnızca geri döndürülemez bir özet (salt'lı SHA-256 hash) olarak, cihazın güvenli alanında saklanır</li>
+    <li><strong>Banka adı</strong>, kategori (kendi oluşturduğunuz kategoriler dahil), etiket ve açıklama notları</li>
+    <li><strong>Kullanım bilgileri:</strong> her IBAN'ın kaç kez kopyalandığı ve en son ne zaman kullanıldığı (yalnızca sıralama için), toplam kopyalama sayısı ve uygulama açılış sayısı</li>
+    <li><strong>Uygulama ayarları:</strong> tema, dil, sıralama, kilit ve güvenlik tercihleri</li>
+    <li><strong>PIN kodu:</strong> yalnızca geri döndürülemez bir özet (salt'lı SHA-256 hash) olarak, cihazın güvenli alanında saklanır. Hatalı PIN deneme sayısı da aynı alanda tutulur.</li>
 </ul>
-<p>Bu veriler <strong>AES-256-GCM</strong> ile şifrelenir. Şifreleme anahtarı cihazınızın güvenli deposunda (Android Keystore) üretilir ve cihazdan hiçbir zaman çıkmaz.</p>
+<p>IBAN kayıtları <strong>AES-256-GCM</strong> ile şifrelenir. Şifreleme anahtarı cihazınızın güvenli deposunda (Android'de Keystore, iPhone'da Anahtar Zinciri) üretilir ve tarafımıza hiçbir zaman gönderilmez.</p>
+<ul>
+    <li><strong>Android:</strong> Uygulama verileri Android'in otomatik bulut yedeğine <strong>dahil edilmez</strong>.</li>
+    <li><strong>iPhone:</strong> Uygulama verileri, iOS'un standart davranışı gereği cihazınızın iCloud veya bilgisayar yedeğine dahil olabilir. Yedekteki IBAN kayıtları <strong>şifreli</strong> hâlde bulunur; yedek Apple tarafından sizin hesabınızda tutulur ve tarafımızca erişilemez. Yedekten geri yüklediğinizde kayıtlarınız yeni iPhone'unuzda da açılır.</li>
+</ul>
+<p>İsteğe bağlı güvenlik özellikleri: PIN veya biyometrik uygulama kilidi, uygulama arka plandayken içeriğin gizlenmesi ve ekran görüntüsü engelleme.</p>
 
 <h2>3. İzinler ve Kullanım Amaçları</h2>
 <ul>
     <li><strong>Kamera:</strong> Yalnızca QR kod tarayarak IBAN eklemek için kullanılır. Kamera görüntüsü kaydedilmez, saklanmaz ve hiçbir yere gönderilmez; işlem tamamen cihaz üzerinde gerçekleşir. İzni vermek zorunlu değildir, vermezseniz diğer tüm özellikler çalışmaya devam eder.</li>
-    <li><strong>Biyometrik doğrulama:</strong> İsteğe bağlı uygulama kilidi için kullanılır. Parmak izi/yüz verisi işletim sistemi tarafından yönetilir; uygulama bu verilere erişemez ve saklamaz.</li>
-    <li><strong>İnternet:</strong> Yalnızca reklam gösterimi ve satın alma doğrulaması için kullanılır. Uygulamanın temel işlevleri çevrimdışı çalışır.</li>
+    <li><strong>Pano:</strong> Pano yalnızca siz "Yapıştır" veya "Panodaki IBAN'ı Kullan" butonuna dokunduğunuzda, IBAN almak için okunur. Pano içeriği saklanmaz ve hiçbir yere gönderilmez.</li>
+    <li><strong>Biyometrik doğrulama (parmak izi, Face ID):</strong> İsteğe bağlı uygulama kilidi için kullanılır. Parmak izi/yüz verisi işletim sistemi tarafından yönetilir; uygulama bu verilere erişemez ve saklamaz.</li>
+    <li><strong>İnternet:</strong> Reklam gösterimi, reklam onayı, satın alma doğrulaması, hata raporları, görselden metin okuma modelinin ve uygulama ayar dosyasının (4.5) indirilmesi için kullanılır. Uygulamanın temel işlevleri çevrimdışı çalışır.</li>
+    <li><strong>Fotoğraf arşivine erişim izni istenmez:</strong> Ekran görüntüsünden IBAN okumak için görseli işletim sisteminin seçicisiyle (Android'de sistem dosya seçicisi, iPhone'da sistem fotoğraf seçicisi) siz seçersiniz; uygulama yalnızca seçtiğiniz tek görsele erişir, fotoğraf arşivinizin geri kalanını göremez.</li>
+    <li><strong>İzleme izni (yalnızca iPhone, reklamlar için):</strong> Ücretsiz sürümde reklam gösterilecekse iOS'un "Uygulama İzleme Şeffaflığı" penceresiyle izin istenir. İzin vermezseniz reklam kimliğiniz kullanılmaz ve reklamlar kişiselleştirilmeden gösterilir. Tercihinizi iPhone Ayarlar → Gizlilik ve Güvenlik → İzleme bölümünden değiştirebilirsiniz.</li>
 </ul>
 
 <h2>4. Üçüncü Taraf Hizmetleri</h2>
 <h3>4.1 Google AdMob (reklamlar)</h3>
-<p>Ücretsiz sürümde Google AdMob üzerinden reklam gösterilir. AdMob, reklam sunmak ve ölçümlemek için reklam kimliği (Advertising ID) gibi sınırlı cihaz bilgilerini işleyebilir. Bu süreç Google tarafından yürütülür; IBAN'larınız veya uygulama içeriğiniz AdMob ile <strong>asla</strong> paylaşılmaz. Ayrıntılar: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik Politikası</a>.</p>
+<p>Ücretsiz sürümde Google AdMob üzerinden reklam gösterilir; yetişkinlere yönelik reklam içerikleri kapalıdır. AdMob, reklam sunmak ve ölçümlemek için reklam kimliği (Advertising ID) gibi sınırlı cihaz bilgilerini işleyebilir. Bu süreç Google tarafından yürütülür; IBAN'larınız veya uygulama içeriğiniz AdMob ile <strong>asla</strong> paylaşılmaz. Ayrıntılar: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik Politikası</a>.</p>
+<p>Avrupa Ekonomik Alanı, İngiltere ve İsviçre'deki kullanıcılardan reklamlar için Google'ın onay formuyla (User Messaging Platform) izin istenir. Onay vermezseniz kişiselleştirilmiş reklam gösterilmez; tercihinizi Ayarlar → "Reklam Gizlilik Tercihleri" bölümünden istediğiniz zaman değiştirebilirsiniz.</p>
 <p>Reklamları kalıcı olarak kaldırmak için uygulama içinden tek seferlik "Pro" satın alımı yapabilir veya isteğe bağlı ödüllü reklam izleyerek 24 saat reklamsız kullanabilirsiniz.</p>
-<h3>4.2 Google Play Faturalandırma (satın alma)</h3>
-<p>Pro satın alımı Google Play üzerinden gerçekleşir. Ödeme bilgilerinizi biz görmeyiz, işlemez ve saklamayız; tüm ödeme süreci Google tarafından yönetilir. Uygulama yalnızca satın alımın geçerli olup olmadığı bilgisini alır.</p>
+<h3>4.2 Uygulama içi satın alma (Google Play / App Store)</h3>
+<p>Pro satın alımı Android'de Google Play Faturalandırma, iPhone'da Apple'ın uygulama içi satın alma sistemi üzerinden gerçekleşir. Ödeme bilgilerinizi biz görmeyiz, işlemez ve saklamayız; tüm ödeme süreci ilgili mağaza tarafından yönetilir. Uygulama yalnızca satın alımın geçerli olup olmadığı bilgisini alır.</p>
+<h3>4.3 Görselden metin okuma (Android: Google ML Kit, iPhone: Apple Vision)</h3>
+<p><strong>iPhone'da</strong> metin tanıma Apple'ın cihaz içi Vision çerçevesiyle yapılır; görsel ve metin cihazdan çıkmaz ve bu özellik için hiçbir sunucuya bağlanılmaz.</p>
+<p><strong>Android'de</strong> ekran görüntüsünden veya fotoğraftan IBAN okuma özelliği, Google Play hizmetleri üzerinden çalışan Google ML Kit metin tanıma özelliğini kullanır. <strong>Tanıma tamamen cihaz üzerinde yapılır; seçtiğiniz görsel ve içindeki metin Google'a veya bize gönderilmez</strong> ve uygulama görseli saklamaz. ML Kit, metin tanıma modelini indirmek ve güncellemek için Google sunucularına bağlanabilir ve özelliğin performansı ve kullanımı hakkında sınırlı tanılama bilgilerini (ör. cihaz modeli, işletim sistemi sürümü, uygulama paket adı ve sürümü, hata kodları) Google'a gönderebilir. Bu özelliği kullanmak isteğe bağlıdır.</p>
+<h3>4.4 Uygulama içi değerlendirme</h3>
+<p>Uygulamayı bir süre kullandıktan sonra mağazanın (Google Play veya App Store) değerlendirme penceresi gösterilebilir. Değerlendirme mağaza üzerinden yapılır; puanınızı veya kimliğinizi uygulama içinde görmeyiz.</p>
+<h3>4.5 Uygulama ayar dosyası (GitHub Pages)</h3>
+<p>Reklam sıklığı gibi ayarları uygulamayı güncellemeden düzenleyebilmek için uygulama, günde en fazla iki kez GitHub Pages'te barındırılan küçük bir ayar dosyasını (bu politikanın bulunduğu sitede) indirir. Bu istekte <strong>kişisel veri, cihaz kimliği veya IBAN bilgisi gönderilmez</strong>. Her web isteğinde olduğu gibi GitHub IP adresinizi teknik olarak görebilir; ayrıntılar: <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Gizlilik Bildirimi</a>.</p>
 
-<h2>5. Veri Paylaşımı ve Satışı</h2>
-<p>Kişisel verilerinizi <strong>satmıyoruz, kiralamıyoruz ve üçüncü taraflarla paylaşmıyoruz.</strong> IBAN bilgileriniz cihazınızdan yalnızca <em>sizin</em> başlattığınız işlemlerle çıkar: kopyalama, paylaşma veya yedek dosyası oluşturma. Bu durumlarda verinin nereye gideceğini tamamen siz belirlersiniz.</p>
+<h3>4.6 Sentry (hata raporları)</h3>
+<p>Uygulama çökerse veya beklenmeyen bir hata oluşursa, sorunu düzeltebilmemiz için Sentry (Functional Software, Inc.) aracılığıyla anonim bir hata raporu gönderilir. Rapor yalnızca teknik bilgiler içerir: hata mesajı ve koddaki konumu, uygulama sürümü, cihaz modeli ve işletim sistemi sürümü. <strong>IBAN, hesap sahibi adı, ekran görüntüsü veya kullanıcı kimliği gönderilmez</strong>; raporlardaki IBAN'a ya da hesap numarasına benzeyen metinler cihazdan çıkmadan maskelenir. Hata raporlarını Ayarlar → "Hata Raporlarını Gönder" ile kapatabilirsiniz. Ayrıntılar: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">Sentry Gizlilik Politikası</a>.</p>
 
-<h2>6. Yedekleme</h2>
-<p>Uygulama içinden JSON/CSV yedek dosyası oluşturabilirsiniz. Bu dosyalar cihazınızda oluşturulur ve yalnızca sizin seçtiğiniz uygulamaya/konuma paylaşılır. Şifreli yedekler (.ibk) yalnızca oluşturuldukları cihazda geri yüklenebilir. Otomatik yedekler de cihaz içinde kalır, buluta gönderilmez.</p>
+<h2>5. Ana Ekran Widget'ı ve Kısayol</h2>
+<p>İsteğe bağlı ana ekran widget'ı (yalnızca Android), favori IBAN'ınızın yalnızca banka adını ve <strong>maskelenmiş</strong> IBAN'ı (ör. TR33 **** **** 26) gösterir. Uygulama kilidi açıksa widget'tan kopyalama yapılamaz, yalnızca uygulama açılır. Uygulama simgesine uzun basınca çıkan kısayolda sistemde yalnızca kayıt numarası ve banka adı saklanır; IBAN ve hesap sahibi adı kısayola yazılmaz.</p>
 
-<h2>7. Verilerinizi Silme</h2>
+<h2>6. Veri Paylaşımı ve Satışı</h2>
+<p>Kişisel verilerinizi <strong>satmıyoruz, kiralamıyoruz ve üçüncü taraflarla paylaşmıyoruz.</strong> IBAN bilgileriniz cihazınızdan yalnızca <em>sizin</em> başlattığınız işlemlerle çıkar: kopyalama, metin/görsel/QR olarak paylaşma veya yedek dosyası oluşturma. Paylaşılan görsel ve QR'a hesap sahibi adı ile bankanın eklenip eklenmeyeceğini siz seçersiniz. Açıklama notlarınız paylaşılan içeriğe eklenmez.</p>
+
+<h2>7. Yedekleme</h2>
 <ul>
-    <li><strong>Tek tek:</strong> Her IBAN kaydını uygulama içinden silebilirsiniz.</li>
-    <li><strong>Toplu:</strong> Ayarlar → "Tüm Verileri Sil" ile tüm kayıtlarınızı ve şifreleme anahtarlarını kalıcı olarak silebilirsiniz.</li>
-    <li><strong>Tamamen:</strong> Uygulamayı kaldırmak, cihazdaki tüm verileri ve PIN'i kalıcı olarak siler. Sunucuda hiçbir kopya bulunmadığından silme işlemi geri alınamaz ve eksiksizdir.</li>
+    <li><strong>Şifreli yedek (.ibk):</strong> Sizin belirlediğiniz parolayla şifrelenir (scrypt + AES-256-GCM) ve yeni telefonunuz dahil herhangi bir cihazda aynı parolayla açılabilir. Parola hiçbir yerde saklanmaz; unutursanız yedek açılamaz.</li>
+    <li><strong>CSV dışa aktarma:</strong> Şifresizdir; yalnızca sizin seçtiğiniz uygulamaya/konuma paylaşılır. Paylaşım için oluşturulan geçici dosya bir sonraki açılışta cihazdan silinir.</li>
+    <li><strong>Otomatik yedekler:</strong> Uygulama günde bir kez, cihaza özel anahtarla şifrelenmiş bir yedek alır ve son 5 yedeği yalnızca cihazda tutar. Bu yedekler tarafımıza gönderilmez ve uygulama kaldırılınca silinir (iPhone'da cihaz yedeğinize şifreli hâlde dahil olabilir, bkz. 2. bölüm).</li>
 </ul>
 
-<h2>8. Çocukların Gizliliği</h2>
+<h2>8. Verilerinizi Silme</h2>
+<ul>
+    <li><strong>Tek tek:</strong> Her IBAN kaydını uygulama içinden silebilirsiniz.</li>
+    <li><strong>Toplu:</strong> Ayarlar → "Tüm Verileri Sil" ile tüm kayıtlarınızı, kendi kategorilerinizi, otomatik yedekleri, dışa aktarma dosyalarını ve şifreleme anahtarlarını kalıcı olarak silebilirsiniz.</li>
+    <li><strong>Tamamen:</strong> Uygulamayı kaldırmak, cihazdaki tüm verileri ve PIN'i kalıcı olarak siler. Sunucuda hiçbir kopya bulunmadığından silme işlemi geri alınamaz ve eksiksizdir.</li>
+</ul>
+<p>Daha önce paylaştığınız veya dışa aktardığınız dosyalar (ör. bir mesajlaşma uygulamasına gönderilen yedek) sizin kontrolünüzdedir ve bu işlemlerden etkilenmez.</p>
+
+<h2>9. Çocukların Gizliliği</h2>
 <p>Uygulama 13 yaşın altındaki çocuklara yönelik değildir ve onlardan bilerek veri toplamaz.</p>
 
-<h2>9. Değişiklikler</h2>
+<h2>10. Değişiklikler</h2>
 <p>Bu politika gerektiğinde güncellenebilir. Güncel sürüm her zaman bu sayfada yayımlanır ve üstteki tarih güncellenir.</p>
 
-<h2>10. İletişim</h2>
+<h2>11. İletişim</h2>
 <div class="contact">
     <p>Gizlilik politikamızla ilgili sorularınız veya talepleriniz için:</p>
     <p><strong>E-posta:</strong> <a href="mailto:fidovasoft@gmail.com">fidovasoft@gmail.com</a></p>
@@ -97,55 +125,83 @@
 <hr>
 
 <h1 id="english">IBAN Defteri — Privacy Policy (English)</h1>
-<p class="meta"><strong>Last updated:</strong> 7 August 2026 · App: IBAN Defteri (com.memreyaa.ibandefteri)</p>
+<p class="meta"><strong>Last updated:</strong> 5 October 2026 · App: IBAN Defteri (com.memreyaa.ibandefteri)</p>
 
 <h2>1. Summary</h2>
-<p>IBAN Defteri is a tool for storing your IBANs on your own device. <strong>No account is required, there is no sign-in, and your personal data is never sent to any server.</strong> Everything you save stays encrypted on your device only.</p>
+<p>IBAN Defteri is a tool for storing your IBANs on your own device. <strong>No account is required, there is no sign-in, and we have no servers; what you save is never sent to us.</strong> All your entries stay encrypted on your device only. The limited technical information processed by the services used for ads, purchases, reading text from images and crash reports is described in section 4.</p>
 
 <h2>2. Data Stored On Your Device</h2>
 <p>The following is kept exclusively in your device's local storage and can never be seen, collected or accessed by us:</p>
 <ul>
     <li><strong>IBAN numbers</strong> and account holder names</li>
-    <li><strong>Bank selection</strong>, categories, tags and description notes</li>
-    <li><strong>App settings:</strong> theme, language and security preferences</li>
-    <li><strong>PIN code:</strong> stored only as an irreversible salted SHA-256 hash inside the device's secure storage</li>
+    <li><strong>Bank name</strong>, category (including categories you create), tags and description notes</li>
+    <li><strong>Usage information:</strong> how many times each IBAN was copied and when it was last used (for sorting only), the total copy count and the number of app launches</li>
+    <li><strong>App settings:</strong> theme, language, sorting, lock and security preferences</li>
+    <li><strong>PIN code:</strong> stored only as an irreversible salted SHA-256 hash inside the device's secure storage. The number of wrong PIN attempts is kept in the same place.</li>
 </ul>
-<p>This data is encrypted with <strong>AES-256-GCM</strong>. The encryption key is generated in your device's secure storage (Android Keystore) and never leaves the device.</p>
+<p>IBAN entries are encrypted with <strong>AES-256-GCM</strong>. The encryption key is generated in your device's secure storage (Keystore on Android, Keychain on iPhone) and is never sent to us.</p>
+<ul>
+    <li><strong>Android:</strong> App data is <strong>excluded</strong> from Android's automatic cloud backup.</li>
+    <li><strong>iPhone:</strong> As is standard on iOS, app data may be included in your device's iCloud or computer backup. IBAN entries in the backup stay <strong>encrypted</strong>; the backup is kept by Apple in your account and we cannot access it. When you restore from it, your entries open on your new iPhone too.</li>
+</ul>
+<p>Optional security features: PIN or biometric app lock, hiding content while the app is in the background, and screenshot blocking.</p>
 
 <h2>3. Permissions</h2>
 <ul>
     <li><strong>Camera:</strong> Used only to scan QR codes for adding an IBAN. Camera images are never recorded, stored or transmitted; processing happens entirely on-device. The permission is optional — every other feature keeps working without it.</li>
-    <li><strong>Biometrics:</strong> Used for the optional app lock. Fingerprint/face data is handled by the operating system; the app can neither access nor store it.</li>
-    <li><strong>Internet:</strong> Used only for serving ads and validating purchases. Core features work offline.</li>
+    <li><strong>Clipboard:</strong> The clipboard is read only when you tap "Paste" or "Use IBAN from Clipboard", to pick up an IBAN. Its contents are never stored or transmitted.</li>
+    <li><strong>Biometrics (fingerprint, Face ID):</strong> Used for the optional app lock. Fingerprint/face data is handled by the operating system; the app can neither access nor store it.</li>
+    <li><strong>Internet:</strong> Used for serving ads, ad consent, validating purchases, crash reports, and downloading the text recognition model and the app settings file (4.5). Core features work offline.</li>
+    <li><strong>No photo library access is requested:</strong> To read an IBAN from a screenshot, you pick the image with the system picker (the system file picker on Android, the system photo picker on iPhone); the app can only access the single image you choose and cannot see the rest of your photo library.</li>
+    <li><strong>Tracking permission (iPhone only, for ads):</strong> If the free version shows ads, iOS's App Tracking Transparency prompt asks for your permission. If you decline, your advertising identifier is not used and ads are shown without personalisation. You can change this under iPhone Settings → Privacy &amp; Security → Tracking.</li>
 </ul>
 
 <h2>4. Third-Party Services</h2>
 <h3>4.1 Google AdMob (ads)</h3>
-<p>The free version shows ads via Google AdMob. AdMob may process limited device information such as the Advertising ID in order to serve and measure ads. This is handled by Google; your IBANs and app content are <strong>never</strong> shared with AdMob. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+<p>The free version shows ads via Google AdMob; mature ad content is disabled. AdMob may process limited device information such as the Advertising ID in order to serve and measure ads. This is handled by Google; your IBANs and app content are <strong>never</strong> shared with AdMob. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+<p>Users in the European Economic Area, the UK and Switzerland are asked for consent through Google's consent form (User Messaging Platform). If you do not consent, personalised ads are not shown; you can change your choice at any time under Settings → "Ad Privacy Choices".</p>
 <p>You can remove ads permanently with a one-time in-app "Pro" purchase, or watch an optional rewarded ad for 24 hours of ad-free use.</p>
-<h3>4.2 Google Play Billing (purchases)</h3>
-<p>The Pro purchase is processed by Google Play. We never see, process or store your payment details; the entire payment flow is handled by Google. The app only receives whether the purchase is valid.</p>
+<h3>4.2 In-app purchases (Google Play / App Store)</h3>
+<p>The Pro purchase is processed by Google Play Billing on Android and by Apple's in-app purchase system on iPhone. We never see, process or store your payment details; the entire payment flow is handled by the store. The app only receives whether the purchase is valid.</p>
+<h3>4.3 Reading text from images (Android: Google ML Kit, iPhone: Apple Vision)</h3>
+<p>On <strong>iPhone</strong>, text recognition uses Apple's on-device Vision framework; the image and its text never leave the device and no server is contacted for this feature.</p>
+<p>On <strong>Android</strong>, reading an IBAN from a screenshot or photo uses Google ML Kit text recognition, provided through Google Play services. <strong>Recognition happens entirely on your device; the image you pick and the text in it are never sent to Google or to us</strong>, and the app does not store the image. ML Kit may contact Google servers to download and update the text recognition model and may send Google limited diagnostic information about the feature's performance and usage (e.g. device model, OS version, app package name and version, error codes). Using this feature is optional.</p>
+<h3>4.4 In-app review</h3>
+<p>After you have used the app for a while, the store's rating dialog (Google Play or App Store) may be shown. Reviews are handled by the store; we cannot see your rating or identity inside the app.</p>
+<h3>4.5 App settings file (GitHub Pages)</h3>
+<p>To adjust settings such as ad frequency without an app update, the app downloads a small settings file hosted on GitHub Pages (the same site as this policy) at most twice a day. <strong>No personal data, device identifier or IBAN data is sent</strong> with this request. As with any web request, GitHub can technically see your IP address; see the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</p>
 
-<h2>5. Data Sharing and Sale</h2>
-<p>We do <strong>not sell, rent or share</strong> your personal data with third parties. Your IBAN data leaves your device only through actions <em>you</em> initiate — copying, sharing, or creating a backup file — and you choose the destination in every case.</p>
+<h3>4.6 Sentry (crash reports)</h3>
+<p>If the app crashes or an unexpected error occurs, an anonymous error report is sent via Sentry (Functional Software, Inc.) so we can fix the problem. The report contains only technical information: the error message and its location in the code, app version, device model and operating system version. <strong>No IBANs, account holder names, screenshots or user identifiers are sent</strong>; any text resembling an IBAN or account number is masked on the device before the report leaves it. You can turn crash reports off under Settings → "Send Crash Reports". See the <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">Sentry Privacy Policy</a>.</p>
 
-<h2>6. Backups</h2>
-<p>You can create JSON/CSV backup files from within the app. These are generated on your device and shared only to the app or location you pick. Encrypted backups (.ibk) can only be restored on the device that created them. Automatic backups also stay on the device and are never uploaded to any cloud.</p>
+<h2>5. Home Screen Widget and Shortcut</h2>
+<p>The optional home screen widget (Android only) shows only the bank name and a <strong>masked</strong> IBAN (e.g. TR33 **** **** 26) of your favourite entry. If the app lock is on, the widget cannot copy; it only opens the app. For the shortcut shown when you long-press the app icon, the system stores only an entry number and the bank name; the IBAN and account holder name are never written to it.</p>
 
-<h2>7. Deleting Your Data</h2>
+<h2>6. Data Sharing and Sale</h2>
+<p>We do <strong>not sell, rent or share</strong> your personal data with third parties. Your IBAN data leaves your device only through actions <em>you</em> initiate — copying, sharing as text/image/QR, or creating a backup file. You choose whether the account holder name and bank are included in a shared image or QR. Your description notes are never included in shared content.</p>
+
+<h2>7. Backups</h2>
 <ul>
-    <li><strong>Individually:</strong> Delete any IBAN entry from within the app.</li>
-    <li><strong>All at once:</strong> Settings → "Delete All Data" permanently erases all entries and encryption keys.</li>
-    <li><strong>Completely:</strong> Uninstalling the app permanently deletes all local data and the PIN. Because no copy exists on any server, deletion is complete and irreversible.</li>
+    <li><strong>Encrypted backup (.ibk):</strong> Encrypted with a password you choose (scrypt + AES-256-GCM) and can be opened on any device, including your new phone, with the same password. The password is never stored; if you forget it, the backup cannot be opened.</li>
+    <li><strong>CSV export:</strong> Not encrypted; shared only to the app or location you pick. The temporary file created for sharing is deleted from the device the next time the app starts.</li>
+    <li><strong>Automatic backups:</strong> Once a day the app creates a backup encrypted with a device-specific key and keeps the last 5 on the device only. They are never sent to us and are deleted when the app is uninstalled (on iPhone they may be included, still encrypted, in your device backup; see section 2).</li>
 </ul>
 
-<h2>8. Children's Privacy</h2>
+<h2>8. Deleting Your Data</h2>
+<ul>
+    <li><strong>Individually:</strong> Delete any IBAN entry from within the app.</li>
+    <li><strong>All at once:</strong> Settings → "Delete All Data" permanently erases all entries, your own categories, automatic backups, export files and encryption keys.</li>
+    <li><strong>Completely:</strong> Uninstalling the app permanently deletes all local data and the PIN. Because no copy exists on any server, deletion is complete and irreversible.</li>
+</ul>
+<p>Files you have already shared or exported (e.g. a backup sent to a messaging app) remain under your control and are not affected.</p>
+
+<h2>9. Children's Privacy</h2>
 <p>The app is not directed to children under 13 and does not knowingly collect data from them.</p>
 
-<h2>9. Changes</h2>
+<h2>10. Changes</h2>
 <p>This policy may be updated when needed. The current version is always published on this page with an updated date at the top.</p>
 
-<h2>10. Contact</h2>
+<h2>11. Contact</h2>
 <div class="contact">
     <p>For any questions or requests regarding this privacy policy:</p>
     <p><strong>Email:</strong> <a href="mailto:fidovasoft@gmail.com">fidovasoft@gmail.com</a></p>
