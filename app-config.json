@@ -9,6 +9,11 @@
     "bannerEnabled": true,
     "adFreeOfferAfterInterstitial": true,
     "adFreeOfferIntervalDays": 3,
-    "adFreeRewardHours": 24
+    "adFreeRewardHours": 24,
+    "rewardedEnabled": true
+  },
+  "platforms": {
+    "ios": {},
+    "android": {}
   }
 }
