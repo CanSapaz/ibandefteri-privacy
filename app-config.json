@@ -10,7 +10,8 @@
     "adFreeOfferAfterInterstitial": true,
     "adFreeOfferIntervalDays": 3,
     "adFreeRewardHours": 24,
-    "rewardedEnabled": true
+    "rewardedEnabled": true,
+    "shareInterstitialEnabled": true
   },
   "platforms": {
     "ios": {},
